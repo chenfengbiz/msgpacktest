@@ -1,0 +1,11 @@
+cmake_minimum_required (VERSION 2.8)
+project (LuaDemo)
+option(WithLuaJIT "Use LuaJIT" ON)
+add_executable(LuaDemo main.cpp)
+target_link_libraries(LuaDemo msgpackc profiler)
+if (WithLuaJIT)
+target_link_libraries(LuaDemo luajit-5.1)
+else (WithLuaJIT)
+target_link_libraries(LuaDemo lua m dl)
+endif (WithLuaJIT)
+
